@@ -4,11 +4,23 @@ import { BiLibrary } from "react-icons/bi";
 import { GoPlus } from "react-icons/go";
 import SideButton from "./SideButton";
 import SideCard from "./SideCard";
-import { AiFillHome } from "react-icons/ai";
+import { AiFillHome, AiOutlineHome  } from "react-icons/ai";
 import { FaSpotify } from "react-icons/fa6";
 import { TbWorld } from "react-icons/tb";
+import { BiSolidSearch } from "react-icons/bi";
+import { NavLink } from "react-router-dom";
 
 function Sidebar() {
+  const notactive=({isActive})=>{
+    return (
+      isActive?"py-[9px] flex hover:bg-[#232223] items-center":'hidden'
+    );
+  }
+  const activity=({isActive})=>{
+    return (
+      isActive?'hidden':"py-[9px] flex hover:bg-[#232223] items-center "
+    );
+  }
   return (
     <div className="flex font-semibold bg-black ">
       <div className="h-screen  w-[20.7rem] bg-black text-white p-2  -left-[1px] fixed">
@@ -17,13 +29,22 @@ function Sidebar() {
             <FaSpotify className="text-white mx-3 w-[25px] h-[25px]" />
             <span className="text-sm px-1 -mx-3">Spotify</span>
           </div>
-          <div className="py-[9px] flex  hover:bg-[#232223] items-center">
-            <AiFillHome className="text-white mx-3 mr-5 w-[25px] h-[25px]" />
+          <NavLink to="/" className={activity}>
+            <AiOutlineHome  className="text-white mx-3 mr-5 w-[25px] h-[25px]" />
             Home
-          </div>
-          <div className="py-[9px] flex hover:bg-[#232223] items-center ">
-            <BsSearch className="mr-5 mx-3 w-[25px] h-[25px]" /> Search
-          </div>
+          </NavLink>
+          <NavLink to="/" className={notactive}>
+            <AiFillHome  className="text-white mx-3 mr-5 w-[25px] h-[25px]" />
+            Home
+          </NavLink>
+          <NavLink to="/search" className={activity}>
+            <BsSearch className="mr-5 mx-3 w-[25px] h-[25px]" />
+             Search
+          </NavLink>
+          <NavLink to="/search" className={notactive}>
+            <BiSolidSearch className="mr-5 mx-3 w-[25px] h-[25px]" />
+             Search
+          </NavLink>
         </div>
         
         <div className="h-[60vh] bg-[#121113]   text-white mt-2 rounded-lg">
