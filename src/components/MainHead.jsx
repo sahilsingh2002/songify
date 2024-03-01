@@ -7,7 +7,8 @@ import { useSelector } from 'react-redux';
 function MainHead() {
   const dispatch = useDispatch();
   const auth = useSelector(state=>state.auth);
-  const item=useSelector(state=>state.search);
+  const searhItem = useSelector(state=>state.search);
+  
   const search = useSearch();
   const handleSearch = (searchItem, auth) => {
     search(searchItem, auth);
@@ -36,7 +37,7 @@ function MainHead() {
         } }  onChange={e=>{
           dispatch(makeData(e.target.value));
           handleSearch(e.target.value,auth);
-        }}/>
+        }} value={searhItem}/>
         
     </div>
 </form>

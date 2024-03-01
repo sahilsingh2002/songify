@@ -1,12 +1,11 @@
 import './App.css';
 
-import React,{useState, useEffect} from'react';
+import React,{ useEffect} from'react';
 import {Route, Routes} from 'react-router-dom'
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setAuth } from './redux/slices/AuthSlice';
-import {useSelector } from 'react-redux';
 import { allAlbum } from './redux/slices/AlbumSlice';
 
 
@@ -16,6 +15,8 @@ const CLIENT_SECRET = '16e0d3c8058a48f0b416b3a00c240435';
 
 export function useSearch(searchItem,auth) {
   const dispatch = useDispatch();
+  const searchResult =useSelector(state=>state.search);
+  console.log(searchResult);
  
   async function search(searchItem, auth) {
      console.log('Searching...');
@@ -26,27 +27,44 @@ export function useSearch(searchItem,auth) {
          "Authorization": 'Bearer ' + auth,
        },
      };
+     const featured = await fetch('https://api.spotify.com/v1/browse/featured-playlists', searchparams)
+     .then(response => response.json())
+     .then(d=>{return(d)});
  
      const artistId = await fetch('https://api.spotify.com/v1/search?q=' + searchItem + '&type=artist', searchparams)
        .then(response => response.json())
        .then(data => data?.artists?.items[0]?.id);
  
-     console.log(artistId);
+     console.log(artistId, featured);
+     if(searchResult.length>0){
+
+       const albums = await fetch(`https://api.spotify.com/v1/artists/${artistId}/albums?include_groups=album&limit=50`, searchparams)
+         .then(response => response.json())
+         .then(data => data.items);
+   
+       dispatch(allAlbum(albums));
+     }
+     else{
+      dispatch(allAlbum(featured.playlists?.items));
+     }
  
-     const albums = await fetch(`https://api.spotify.com/v1/artists/${artistId}/albums?include_groups=album&limit=50`, searchparams)
-       .then(response => response.json())
-       .then(data => data.items);
- 
-     dispatch(allAlbum(albums));
   }
  
   return search;
  }
 function App() {
+  const auth = useSelector(state=>state.auth);
+  const searchItem = useSelector(state=>state.search);
  
   const dispatch=useDispatch();
-  const items =useSelector(state=>state);
+  
+  const search = useSearch();
+  const handleSearch = (searchItem, auth) => {
+    search(searchItem, auth);
+ };
   useEffect(() =>{
+    
+    
     var authparams = {
       method:'POST',
       headers : {
@@ -59,6 +77,9 @@ function App() {
     .then(data=>dispatch(setAuth(data.access_token)));
     
   },[dispatch]);
+  useEffect(()=>{
+    handleSearch();
+  },[]);
   
   
  return(
@@ -68,6 +89,7 @@ function App() {
       <Route path="/home" element={<HomePage />} />
       <Route path="/search" element={<SearchPage />} />
     </Routes>
+    
   </div>
   
 

@@ -33,12 +33,16 @@ function Musicplayer() {
     }
   };
   return (
-    <div className='flex z-20 fixed bottom-0 w-full bg-black h-[4.5rem] items-center'>
-      <div className='w-[20%] bg-transparent text-white relative mx-5 flex items-center'>
-        <img src={items.image} alt="player img"  className='h-[4.5rem] mr-5 -mt-3'/>
+    
+
+    <div className='flex z-20 fixed bottom-0 w-full bg-black h-[4rem] items-center'>
+      {items.image && 
+      <div className='w-[20%] bg-transparent text-white relative mx-5  flex items-center'>
+        <img src={items.image} alt="player img"  className='h-[4rem] mr-5 '/>
         <h2>{items.name}</h2>
       </div>
-      <div className='w-full bg-transparent -ml-[20%] text-white relative '>
+      }
+      <div className='w-full absolute bg-transparent  text-white left-[%] '>
         <div className='flex justify-center  items-center py-5'>
           <PiShuffleLight className="text-white w-5 h-5 mx-2 cursor-pointer"/>
           <IoPlaySkipBack className="text-white w-5 h-5 mx-2 cursor-pointer"/>
