@@ -10,7 +10,7 @@ import SearchBody from '../components/SearchBody';
 
 function HomePage() {
   const alb = useSelector(state=>state.album);
-  console.log('album',alb);
+  
 
   const url='https://www.theaudiodb.com/api/v1/json/2/album.php?i=112024';
   const [Album, setAlbum] = useState([]);

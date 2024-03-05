@@ -2,7 +2,7 @@ import React from 'react'
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { useDispatch } from 'react-redux';
 import { makeData } from '../redux/slices/SearchSlice';
-import { useSearch } from '../App';
+import { useSearch } from '../pages/SearchPage';
 import { useSelector } from 'react-redux';
 function MainHead() {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ function MainHead() {
   return (
     <div>
 
-      <div className={`flex h-[4.73rem]  justify-between px-5 w-[73.8vw] pt-5 -mt-5 fixed z-10 bg-black`}>
+      <div className={`flex h-[4.73rem] items-center  justify-between px-5 w-[73.8vw] pt-2 -mt-5 fixed z-10 ${window.scrollY==0? "bg-black":"bg-purple-500"}`}>
       <div className="flex">
         <FaAngleLeft className="text-white bg-black border-gray-900 rounded-full border w-6 h-6 mx-3" />
         <FaAngleRight className="text-white bg-black border-gray-900 rounded-full border w-6 h-6 mx-3" />
@@ -32,7 +32,7 @@ function MainHead() {
         </div>
         <input type="search" id="default-search" className="block w-full p-4 ps-10 text-sm text-white border border-gray-800 rounded-lg bg-black focus:ring-grey-500 focus:border-grey-500" placeholder="Search a song" onKeyDown={e=>{
           if(e.key==="Enter"){
-            console.log("Enter");
+           console.log("Enter");
           }
         } }  onChange={e=>{
           dispatch(makeData(e.target.value));
