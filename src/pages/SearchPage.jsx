@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
-import Sidebar from '../components/Sidebar'
+
 import SearchBody from '../components/SearchBody';
 import { useSelector,useDispatch } from 'react-redux';
 import Musicplayer from '../components/Musicplayer';
 import { allAlbum } from '../redux/slices/AlbumSlice';
-import { AbortController } from "@azure/abort-controller";
+import MainHead from '../components/MainHead';
+
 
 
 export function useSearch(searchItem,auth) {
@@ -70,10 +71,10 @@ export function useSearch(searchItem,auth) {
   },[searchItem,auth]);
   
   return (
-    <div>
-      <Sidebar/>
+    <div className="HomePage bg-transparent ">
+      
       <SearchBody Album={albums}/>
-      <Musicplayer/>
+      
     </div>
   )
 }

@@ -1,11 +1,12 @@
 
-import Sidebar from '../components/Sidebar';
+
 import Musicplayer from '../components/Musicplayer';
 import MainBody from '../components/MainBody';
 import { useState, useEffect } from'react';
 
 import { useSelector } from 'react-redux';
-import SearchBody from '../components/SearchBody';
+import MainHead from '../components/MainHead';
+
 
 
 function HomePage() {
@@ -25,16 +26,16 @@ function HomePage() {
 
 
   return (
-    <div className="HomePage bg-black h-screen w-screen">
+    <div className="HomePag">
+    
       
-      <Sidebar/>
-      {
-        alb[0]?<SearchBody Album={alb}/>:<MainBody Album={Album}/>
+      
+       <MainBody Album={Album}/>
         
-      }
-      {}
       
-      <Musicplayer/>
+      
+      
+      
     </div>
   );
 }

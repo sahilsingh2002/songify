@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import MainHead from '../components/MainHead';
+import TrackBody from '../components/TrackBody';
 
 function TracksPage() {
     const auth = useSelector(state =>state.auth);
     const {id} = useParams();
-    console.log(auth);
     const [tracks, setTracks] = useState([]);
+    const artist = useSelector(state => state.track);
+    console.log(artist);
 
     
     async function GetAllTracks(){
@@ -25,10 +28,11 @@ function TracksPage() {
     useEffect(()=>{
         GetAllTracks()
     },[]);
-    console.log(tracks);
+    
   return (
-    <div>
-      yoo
+    <div className="HomePage ">
+
+      <TrackBody artist={artist} tracks = {tracks}/>
     </div>
   )
 }
