@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAuth } from './redux/slices/AuthSlice';
+import TracksPage from './pages/TracksPage';
 
 
 
@@ -45,6 +46,8 @@ function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/home" element={<HomePage />} />
       <Route path="/search" element={<SearchPage />} />
+      <Route path = "/search/:id" element={<TracksPage/>}/>
+      
     </Routes>
     
   </div>
