@@ -18,7 +18,7 @@ function SearchBody({Album}) {
           {Album[0]?.map((alb)=>{
             return( 
               <Link to = {`/search/${alb.id}`}>
-                <MainCard id={alb.id} name={alb.name} image={alb.images[0].url} desc={alb.strDescriptionEN?String(alb.strDescriptionEN).slice(0,30)+'...':''}/>
+                <MainCard album = {alb} id={alb.id} name={alb.name} image={alb.images[0].url} desc={alb.strDescriptionEN?String(alb.strDescriptionEN).slice(0,30)+'...':''}/>
               </Link>
   )})  
         }

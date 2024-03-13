@@ -9,7 +9,7 @@ function TracksPage() {
     const {id} = useParams();
     const [tracks, setTracks] = useState([]);
     const artist = useSelector(state => state.track);
-    console.log(artist);
+    
 
     
     async function GetAllTracks(){

@@ -4,8 +4,9 @@ import {setTrack} from '../redux/slices/TrackSlice';
 
 function MainCard(props) {
   const dispatch = useDispatch();
+  
   return (
-    <div className='bg-[#171717] m-3 rounded-lg py-4 px-3 flex flex-col items-center cursor-pointer'  onClick={e=>{dispatch(setTrack(props))}}>
+    <div className='bg-[#171717] m-3 rounded-lg py-4 px-3 flex flex-col items-center cursor-pointer'  onClick={e=>{dispatch(setTrack(props.album))}}>
       <div className=' flex'>
       <img id={props.id} src={props.image} alt="img" className='flex justify-center rounded-lg'  />
       </div>
