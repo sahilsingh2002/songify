@@ -4,7 +4,7 @@ import React,{ useEffect} from'react';
 import {Route, Routes} from 'react-router-dom'
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setAuth } from './redux/slices/AuthSlice';
 import TracksPage from './pages/TracksPage';
 import Musicplayer from './components/Musicplayer';
