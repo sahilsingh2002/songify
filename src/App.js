@@ -17,8 +17,7 @@ import Sidebar from './components/Sidebar';
 
 
 function App() {
-  const auth = useSelector(state=>state.auth);
-  const searchItem = useSelector(state=>state.search);
+  
  
   const dispatch=useDispatch();
   
