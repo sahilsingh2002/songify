@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 
 import SearchBody from '../components/SearchBody';
 import { useSelector,useDispatch } from 'react-redux';
-import Musicplayer from '../components/Musicplayer';
+
 import { allAlbum } from '../redux/slices/AlbumSlice';
-import MainHead from '../components/MainHead';
+
 
 
 
@@ -68,7 +68,7 @@ export function useSearch(searchItem,auth) {
   useEffect(()=>{
     
     search(searchItem, auth);
-  },[searchItem,auth]);
+  },[searchItem,auth,search]);
   
   return (
     <div className="HomePage bg-transparent ">

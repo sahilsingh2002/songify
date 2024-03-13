@@ -3,7 +3,7 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { useDispatch, useSelector } from 'react-redux';
 import { makeData } from '../redux/slices/SearchSlice';
 import { useSearch } from '../pages/SearchPage';
-import Sidebar from "./Sidebar";
+
 import { useNavigate } from "react-router-dom";
 
 function MainHead() {

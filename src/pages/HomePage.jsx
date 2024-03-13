@@ -1,16 +1,7 @@
-
-
-import Musicplayer from '../components/Musicplayer';
 import MainBody from '../components/MainBody';
 import { useState, useEffect } from'react';
-
-import { useSelector } from 'react-redux';
-import MainHead from '../components/MainHead';
-
-
-
 function HomePage() {
-  const alb = useSelector(state=>state.album);
+  
   
 
   const url='https://www.theaudiodb.com/api/v1/json/2/album.php?i=112024';
@@ -26,7 +17,7 @@ function HomePage() {
 
 
   return (
-    <div className="HomePag">
+    <div className="HomePage">
     
       
       
