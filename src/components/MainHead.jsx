@@ -42,7 +42,7 @@ function MainHead() {
               placeholder="Search a song" 
               onKeyDown={e => {
                 if(e.key === "Enter") {
-                  console.log("Enter");
+                  e.preventDefault();
                 }
               }}  
               onChange={e => {
